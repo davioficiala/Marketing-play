@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f5f5f5;
+}
+
+/* MENU */
+.side-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background: #111;
+  color: white;
+  padding: 20px;
+}
+
+/* TOP BAR */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: white;
+  margin-left: 200px;
+}
+
+/* BUSCA */
+.search {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.search input {
+  width: 100%;
+  padding: 8px;
+}
+
+/* PRODUTOS */
+.container {
+  margin-left: 200px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.product {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button {
+  width: 100%;
+  padding: 8px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+/* CARRINHO */
+.cart-box {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: white;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+}
+
+.hidden {
+  display: none;
+}
