@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function Home() {
   const [cart, setCart] = useState([]);
   const [openCart, setOpenCart] = useState(false);
+  const [sales, setSales] = useState(0); // dinheiro entrando pra você
 
   const products = [
     { id: 1, name: "Cimento", price: 35 },
@@ -11,13 +12,25 @@ export default function Home() {
     { id: 4, name: "Ferro", price: 120 },
   ];
 
-  function addToCart(item) {
-    setCart([...cart, item]);
+  function addToCart(product) {
+    setCart([...cart, product]);
+    setOpenCart(true); // já abre carrinho ao clicar
   }
 
-  function finishOrder() {
-    alert("Pedido enviado para você!");
-    console.log("VENDA:", cart);
+  function totalCart() {
+    return cart.reduce((sum, item) => sum + item.price, 0);
+  }
+
+  function finishPurchase() {
+    const total = totalCart();
+
+    // simula venda entrando pra você
+    setSales(sales + total);
+
+    alert("Venda concluída! R$ " + total);
+
+    console.log("VENDA REGISTRADA:", cart);
+
     setCart([]);
     setOpenCart(false);
   }
@@ -30,7 +43,7 @@ export default function Home() {
         <h3>🛒 Market App</h3>
 
         <div>
-          🔎
+          💰 Saldo: R$ {sales.toFixed(2)}
 
           <span
             style={{ marginLeft: 20, cursor: "pointer" }}
@@ -41,7 +54,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* PRODUTOS */}
+      {/* PRODUTOS (TELA PRINCIPAL) */}
       <div style={styles.container}>
         {products.map((p) => (
           <div key={p.id} style={styles.card}>
@@ -60,21 +73,27 @@ export default function Home() {
         <div style={styles.overlay} onClick={() => setOpenCart(false)}>
 
           <div style={styles.cart} onClick={(e) => e.stopPropagation()}>
-            <h3>Seu Carrinho</h3>
+            <h3>🛒 Carrinho</h3>
 
             {cart.length === 0 ? (
-              <p>Vazio</p>
+              <p>Carrinho vazio</p>
             ) : (
-              cart.map((item, i) => (
-                <p key={i}>
-                  {item.name} - R$ {item.price}
-                </p>
-              ))
-            )}
+              <>
+                {cart.map((item, i) => (
+                  <p key={i}>
+                    {item.name} - R$ {item.price}
+                  </p>
+                ))}
 
-            <button onClick={finishOrder}>
-              Finalizar Compra
-            </button>
+                <hr />
+
+                <h4>Total: R$ {totalCart().toFixed(2)}</h4>
+
+                <button onClick={finishPurchase}>
+                  Concluir Compra
+                </button>
+              </>
+            )}
           </div>
 
         </div>
