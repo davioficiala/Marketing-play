@@ -1,30 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Market App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Bairro</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-    }
-
-    #root {
-      height: 100vh;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- AQUI NASCE TODO O APP -->
-  <div id="root"></div>
+  <!-- MENU ESQUERDA -->
+  <div class="side-menu">
+    <h3>🏪 Menu</h3>
+    <p>Varejo</p>
+    <p>Marketing</p>
+    <p>Crédito</p>
+    <p>Dinheiro</p>
+  </div>
 
-  <!-- React entra aqui -->
-  <script type="module" src="/src/main.jsx"></script>
+  <!-- TOP BAR -->
+  <div class="topbar">
+
+    <div class="menu">☰</div>
+
+    <div class="search">
+      <input type="text" placeholder="Buscar produtos..." />
+    </div>
+
+    <div class="cart" onclick="openCart()">🛒</div>
+
+  </div>
+
+  <!-- PRODUTOS -->
+  <div class="container">
+
+    <div class="product" onclick="login()">
+      <h4>Cimento</h4>
+      <p>R$ 35</p>
+      <button>Comprar</button>
+    </div>
+
+    <div class="product" onclick="login()">
+      <h4>Tijolo</h4>
+      <p>R$ 1,20</p>
+      <button>Comprar</button>
+    </div>
+
+    <div class="product" onclick="login()">
+      <h4>Areia</h4>
+      <p>R$ 80</p>
+      <button>Comprar</button>
+    </div>
+
+  </div>
+
+  <!-- CARRINHO -->
+  <div id="cart-box" class="cart-box hidden">
+    <h3>🛒 Carrinho</h3>
+    <p>Carrinho vazio</p>
+    <button onclick="checkout()">Finalizar compra</button>
+  </div>
+
+  <script src="app.js"></script>
 
 </body>
 </html>
