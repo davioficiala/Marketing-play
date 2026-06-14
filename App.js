@@ -1,3 +1,12 @@
-export default function App() {
-  return <h1>APP FUNCIONANDO 🚀</h1>;
+function login() {
+  alert("Você precisa fazer login para continuar 🚀");
+}
+
+function openCart() {
+  document.getElementById("cart-box").classList.remove("hidden");
+}
+
+function checkout() {
+  alert("Compra finalizada! Pedido enviado 🚚💰");
+  console.log("VENDA REGISTRADA");
 }
